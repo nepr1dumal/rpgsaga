@@ -1,1 +1,8 @@
-﻿Console.WriteLine("RPGSAGA STARTED HERE");
+﻿class Program
+{
+    public static void Main(string[] args)
+    {
+        Game game = new();
+        game.Run();
+    }
+}
