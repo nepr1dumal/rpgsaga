@@ -1,0 +1,4 @@
+interface IEvasive
+{
+    bool Dodge();
+}

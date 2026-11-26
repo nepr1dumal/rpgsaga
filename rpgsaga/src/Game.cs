@@ -9,6 +9,10 @@ class Game
         int number = 1;
         while (HeroesAvailable.Count > 1)
         {
+        foreach (Hero hero in HeroesAvailable)
+            {
+            hero.Refresh();
+            }
         Console.WriteLine($"===== Раунд {number} =====\nВошло на ринг: {HeroesAvailable.Count}");
         Round round = new(HeroesAvailable);
         List<Hero> winners = round.Play();
@@ -31,9 +35,21 @@ class Game
 
     private void Populate()
     {
-        for (int i = 0; i < 15; i++)
+        for (int i = 1; i <= 16; i++)
         {
-            HeroesAvailable.Add(new TestHero(100, 100, "Bot", 20));
+            int typeOfHero = Random.Shared.Next(3);
+            switch (typeOfHero)
+            {
+                case 0:
+                HeroesAvailable.Add(new Knight($"Knight {i}"));
+                break;
+                case 1:
+                HeroesAvailable.Add(new Archer($"Archer {i}"));
+                break;
+                case 2:
+                HeroesAvailable.Add(new Wizard($"Wizard {i}"));
+                break;
+            }
         }
         Console.WriteLine($"Успешно создано героев: {HeroesAvailable.Count}");
     }
